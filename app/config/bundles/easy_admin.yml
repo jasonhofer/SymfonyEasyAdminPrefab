@@ -1,0 +1,34 @@
+easy_admin:
+    site_name: 'Develpup Admin'
+    design:
+        #brand_color: '#025939'
+    entities:
+        User:
+            class: 'AppBundle\Entity\User'
+            list:
+                actions:
+                    - { name: 'edit',   icon: 'edit',   label: '' }
+                    - { name: 'delete', icon: 'trash', label: '' }
+                fields:
+                    - 'id'
+                    - 'enabled'
+                    - 'email'
+                    - 'lastLogin'
+            form:
+                fields:
+                    - { property: 'email', icon: 'user' }
+                    - { property: 'plainPassword', type: 'repeated', type_options: {
+                          type: 'Symfony\Component\Form\Extension\Core\Type\PasswordType',
+                          first_options:  { label: 'Password' },
+                          second_options: { label: 'Confirm Password' },
+                      } }
+                    - { property: 'roles', type: 'choice', type_options: { multiple: true, choices: { User: 'ROLE_USER', Admin: 'ROLE_ADMIN' } } }
+            edit:
+                fields:
+                    - 'enabled'
+                    - { property: 'plainPassword', type_options: { required: false} }
+                form_options: { validation_groups: ['Profile'] }
+            new:
+                fields:
+                    - { property: 'plainPassword', type_options: { required: true} }
+                form_options: { validation_groups: ['Registration'] }
