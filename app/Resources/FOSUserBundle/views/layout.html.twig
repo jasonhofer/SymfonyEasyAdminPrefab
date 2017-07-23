@@ -1,0 +1,108 @@
+
+{%- trans_default_domain 'FOSUserBundle' -%}
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title 'Develpup Admin' %}</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="{{ asset('bundles/easyadmin/stylesheet/bootstrap.min.css') }}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{ asset('bundles/easyadmin/stylesheet/font-awesome.min.css') }}">
+    <!-- Ionicons -->
+    {#<link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">#}
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ asset('bundles/easyadmin/stylesheet/easyadmin-all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/easyadmin/stylesheet/adminlte.min.css') }}">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/skins/square/blue.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="{{ asset('bundles/easyadmin/javascript/html5shiv.min.js') }}"></script>
+    <script src="{{ asset('bundles/easyadmin/javascript/respond.min.js') }}"></script>
+    <![endif]-->
+
+    <!-- Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+
+{% set page_type = page_type|default('login') %}
+
+<body class="hold-transition {{ page_type }}-page" style="display: none;">
+
+    <div class="{{ page_type }}-box">
+        <div class="{{ page_type }}-logo">
+            <a href="#">Develpup Admin</a>
+        </div>
+
+        <!-- /.{{ page_type }}-logo -->
+        <div class="{{ page_type }}-box-body">
+            {% block fos_user_content %}
+            {% endblock fos_user_content %}
+        </div>
+        <!-- /.{{ page_type }}-box-body -->
+
+    </div>
+    <!-- /.{{ page_type }}-box -->
+
+    <!-- jQuery -->
+    <script src="{{ asset('bundles/easyadmin/javascript/jquery.min.js') }}"></script>
+    <!-- Bootstrap -->
+    <script src="{{ asset('bundles/easyadmin/javascript/bootstrap.min.js') }}"></script>
+    <!-- iCheck -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/icheck.min.js"></script>
+    <script>
+        $(function () {
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue',
+                increaseArea: '20%' // optional
+            });
+            $(document.body).fadeIn();
+        });
+    </script>
+
+</body>
+</html>
+
+{#
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+    </head>
+    <body>
+        <div>
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                <a href="{{ path('fos_user_security_logout') }}">
+                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                </a>
+            {% else %}
+                <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+            {% endif %}
+        </div>
+
+        {% if app.request.hasPreviousSession %}
+            {% for type, messages in app.session.flashbag.all() %}
+                {% for message in messages %}
+                    <div class="flash-{{ type }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+
+        <div>
+            {% block fos_user_content %}
+            {% endblock fos_user_content %}
+        </div>
+    </body>
+</html>
+#}

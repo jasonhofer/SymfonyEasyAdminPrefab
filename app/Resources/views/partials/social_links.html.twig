@@ -1,0 +1,12 @@
+
+{% set link_action = context|default('login') == 'login' ? 'Sign in using' : 'Sign up using' %}
+
+<a href="{{ path('connect_facebook') }}" class="btn btn-block btn-social btn-facebook btn-flat">
+    <i class="fa fa-facebook"></i>
+    {{ link_action }} Facebook
+</a>
+
+<a href="{{ path('connect_google') }}" class="btn btn-block btn-social btn-google btn-flat">
+    <i class="fa fa-google-plus"></i>
+    {{ link_action }} Google+
+</a>

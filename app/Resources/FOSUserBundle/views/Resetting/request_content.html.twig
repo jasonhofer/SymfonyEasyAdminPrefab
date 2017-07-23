@@ -1,0 +1,19 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
+
+    <div class="form-group has-feedback">
+        <input type="text" class="form-control" name="username" placeholder="Email" autofocus required>
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <a href="{{ path('fos_user_security_login') }}" class="btn btn-default btn-block btn-flat">Go back</a>
+        </div>
+        <div class="col-sm-6">
+            <input type="submit" class="btn btn-primary btn-block btn-flat" value="{{ 'resetting.request.submit'|trans }}">
+        </div>
+    </div>
+
+</form>

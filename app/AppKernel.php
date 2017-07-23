@@ -17,8 +17,10 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
+            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new WMC\DoctrineNamingStrategyBundle\WMCDoctrineNamingStrategyBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new KnpU\OAuth2ClientBundle\KnpUOAuth2ClientBundle(),
             new JavierEguiluz\Bundle\EasyAdminBundle\EasyAdminBundle(),
 
             new AppBundle\AppBundle(),

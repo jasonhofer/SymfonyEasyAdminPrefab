@@ -13,6 +13,7 @@
 namespace AppBundle\Controller;
 
 use JavierEguiluz\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdminController;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration as Sensio;
 
 /**
  * Class AdminController
@@ -20,6 +21,8 @@ use JavierEguiluz\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdmin
  * @package AppBundle\Controller
  * @author  Jason Hofer <jason.hofer@gmail.com>
  * 2017-07-22 3:07 PM
+ *
+ * @Sensio\Route("/admin")
  */
 class AdminController extends BaseAdminController
 {

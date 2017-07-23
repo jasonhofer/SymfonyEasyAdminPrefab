@@ -15,5 +15,14 @@ parameters:
     mailer_user: ~
     mailer_password: ~
 
+    from_email_address: ~
+    from_email_sender_name: ~
+
     # A secret key that's used to generate certain security-related tokens
     secret: ThisTokenIsNotSoSecretChangeIt
+
+    facebook_client_id: ~
+    facebook_client_secret: ~
+
+    google_client_id: ~
+    google_client_secret: ~
