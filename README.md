@@ -1,4 +1,11 @@
-symfony-skeleton2
-=================
+Symfony EasyAdmin Prefab
+========================
 
-A Symfony project created on July 22, 2017, 1:21 pm.
+Pre-configured project with:
+
+- Symfony 3
+- EasyAdmin Bundle
+- FOS User Bundle
+- League OAuth2:
+  - Facebook
+  - Google+

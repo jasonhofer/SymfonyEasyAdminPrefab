@@ -1,6 +1,6 @@
 {
-    "name": "jason/symfony-skeleton2",
-    "license": "proprietary",
+    "name": "jason/symfony-easyadmin-prefab",
+    "license": "MIT",
     "type": "project",
     "autoload": {
         "psr-4": {
@@ -29,6 +29,12 @@
         "friendsofsymfony/user-bundle": "^2.0",
         "incenteev/composer-parameter-handler": "^2.0",
         "javiereguiluz/easyadmin-bundle": "^1.16",
+        "knpuniversity/oauth2-client-bundle": "^1.10",
+        "league/oauth2-facebook": "^2.0",
+        "league/oauth2-google": "^2.0",
+        "league/oauth2-instagram": "^2.0",
+        "league/oauth2-linkedin": "^2.0",
+        "roave/security-advisories": "dev-master",
         "sensio/distribution-bundle": "^5.0.19",
         "sensio/framework-extra-bundle": "^3.0.2",
         "symfony/monolog-bundle": "^3.1.0",
