@@ -12,16 +12,18 @@ easy_admin:
                 fields:
                     - 'id'
                     - 'enabled'
+                    - 'last_name'
+                    - 'first_name'
                     - 'email'
-                    - 'lastLogin'
+                    - 'last_login'
             form:
                 fields:
+                    - 'first_name'
+                    - 'last_name'
+                    - { property: 'birth_date', type: 'birthday', type_options: { required: false, } }
+                    - { property: 'gender', type: 'AppBundle\Form\Type\GenderType' }
                     - { property: 'email', icon: 'user' }
-                    - { property: 'plainPassword', type: 'repeated', type_options: {
-                          type: 'Symfony\Component\Form\Extension\Core\Type\PasswordType',
-                          first_options:  { label: 'Password' },
-                          second_options: { label: 'Confirm Password' },
-                      } }
+                    - { property: 'plainPassword', type: 'AppBundle\Form\Type\SetPasswordType' }
                     - { property: 'roles', type: 'choice', type_options: { multiple: true, choices: { User: 'ROLE_USER', Admin: 'ROLE_ADMIN' } } }
             edit:
                 fields:

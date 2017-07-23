@@ -384,20 +384,8 @@ class User extends BaseUser
      */
     public function setEmail($email)
     {
-        $this->username = $email;
+        parent::setUsername($email);
 
         return parent::setEmail($email);
-    }
-
-    /**
-     * @param string $username
-     *
-     * @return self|\FOS\UserBundle\Model\User
-     */
-    public function setUsername($username)
-    {
-        $username && ($this->email = $username);
-
-        return parent::setUsername($username);
     }
 }

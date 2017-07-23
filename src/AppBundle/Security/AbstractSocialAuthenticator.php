@@ -169,6 +169,7 @@ abstract class AbstractSocialAuthenticator extends SocialAuthenticator
 
         if (!$user->getId()) {
             $user->setRoles(['ROLE_USER']);
+            $user->setEnabled(true);
             $this->em->persist($user);
             $this->em->flush();
         } else {
