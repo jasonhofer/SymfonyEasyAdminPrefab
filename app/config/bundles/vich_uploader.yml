@@ -1,0 +1,6 @@
+vich_uploader:
+    db_driver: orm
+    mappings:
+        user_images:
+            uri_prefix:         '%uploader.uri_prefix.user_images%'
+            upload_destination: '%kernel.root_dir%/../web/uploads/images/users'

@@ -4,33 +4,44 @@ easy_admin:
         #brand_color: '#025939'
     entities:
         User:
+            label: 'Users'
             class: 'AppBundle\Entity\User'
             list:
+                title: 'Users'
                 actions:
                     - { name: 'edit',   icon: 'edit',   label: '' }
                     - { name: 'delete', icon: 'trash', label: '' }
                 fields:
                     - 'id'
                     - 'enabled'
+                    - { property: 'image', type: 'image', base_path: '%uploader.uri_prefix.user_images%' }
                     - 'last_name'
                     - 'first_name'
-                    - 'email'
+                    - { property: 'email', type: 'email' }
                     - 'last_login'
+                    - 'created_at'
             form:
                 fields:
-                    - 'first_name'
-                    - 'last_name'
+                    - { type: 'group', label: 'Profile', css_class: 'col-sm-6' }
+                    - { property: 'first_name', type: 'text' }
+                    - { property: 'last_name', type: 'text' }
                     - { property: 'birth_date', type: 'birthday', type_options: { required: false, } }
                     - { property: 'gender', type: 'AppBundle\Form\Type\GenderType' }
-                    - { property: 'email', icon: 'user' }
+
+                    - { type: 'group', label: 'Image', css_class: 'col-sm-6' }
+                    - { property: 'imageFile', type: 'vich_image' }
+
+                    - { type: 'group', label: 'Account', css_class: 'col-sm-6 new-row' }
+                    - 'enabled'
+                    - { property: 'email', type: 'email' }
                     - { property: 'plainPassword', type: 'AppBundle\Form\Type\SetPasswordType' }
-                    - { property: 'roles', type: 'choice', type_options: { multiple: true, choices: { User: 'ROLE_USER', Admin: 'ROLE_ADMIN' } } }
+                    - { property: 'roles', type: 'AppBundle\Form\Type\UserRolesType', type_options: { required: false, } }
             edit:
                 fields:
-                    - 'enabled'
                     - { property: 'plainPassword', type_options: { required: false} }
                 form_options: { validation_groups: ['Profile'] }
             new:
                 fields:
+                    - { property: 'enabled', type_options: { data: true } }
                     - { property: 'plainPassword', type_options: { required: true} }
                 form_options: { validation_groups: ['Registration'] }

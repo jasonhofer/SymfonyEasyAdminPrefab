@@ -21,6 +21,8 @@ class AppKernel extends Kernel
             new WMC\DoctrineNamingStrategyBundle\WMCDoctrineNamingStrategyBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new KnpU\OAuth2ClientBundle\KnpUOAuth2ClientBundle(),
+            new Vich\UploaderBundle\VichUploaderBundle(),
+            new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new JavierEguiluz\Bundle\EasyAdminBundle\EasyAdminBundle(),
 
             new AppBundle\AppBundle(),
@@ -30,11 +32,11 @@ class AppKernel extends Kernel
             $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
+            $bundles[] = new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
 
             if ('dev' === $this->getEnvironment()) {
                 $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
                 $bundles[] = new Symfony\Bundle\WebServerBundle\WebServerBundle();
-                $bundles[] = new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
             }
         }
 

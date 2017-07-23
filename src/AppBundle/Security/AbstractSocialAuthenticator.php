@@ -44,6 +44,9 @@ abstract class AbstractSocialAuthenticator extends SocialAuthenticator
     /** @var RouterInterface */
     protected $router;
 
+    /** @var UserManager */
+    protected $userManager;
+
     /**
      * AbstractSocialAuthenticator constructor.
      *
@@ -60,6 +63,16 @@ abstract class AbstractSocialAuthenticator extends SocialAuthenticator
 
     abstract protected function getSocialType();
     abstract protected function applySocialUserData(User $user, ResourceOwnerInterface $socialUser);
+
+    /**
+     * @param UserManager $manager
+     *
+     * @required
+     */
+    public function setUserManager(UserManager $manager)
+    {
+        $this->userManager = $manager;
+    }
 
     /**
      * @return string
@@ -129,21 +142,20 @@ abstract class AbstractSocialAuthenticator extends SocialAuthenticator
         $socialUser = $this->getOAuth2Client()
             ->fetchUserFromToken($credentials);
 
-        $repo = $this->em->getRepository('AppBundle:User');
-
         // 1) have they logged in with this social ID before? Easy!
-        $existingUser = $repo->findOneBySocialId($this->getSocialType(), $socialUser->getId());
+        $existingUser = $this->userManager->findUserBySocialId($this->getSocialType(), $socialUser->getId());
 
         if ($existingUser) {
             return $this->updateSocialUserData($existingUser, $socialUser);
         }
 
         // 2) do we have a matching user by email?
-        $user = $repo->findOneByEmail($this->getSocialEmailAddress($socialUser));
+        $user = $this->userManager->findUserByEmail($this->getSocialEmailAddress($socialUser));
 
         // 3) "Register" them by creating a User object
         if (!$user) {
-            $user = new User();
+            /** @var User $user */
+            $user = $this->userManager->createUser();
         }
 
         return $this->updateSocialUserData($user, $socialUser);
@@ -165,18 +177,15 @@ abstract class AbstractSocialAuthenticator extends SocialAuthenticator
             ->setSocialId($socialUser->getId())
             ->setSocialData($socialUser->toArray())
             ->setLoginMethod(User::LOGIN_METHOD_SOCIAL)
-            ->setPlainPassword(hash('sha1', random_bytes(40)));
+            ->setPlainPassword('');
 
         if (!$user->getId()) {
-            $user->setRoles(['ROLE_USER']);
-            $user->setEnabled(true);
-            $this->em->persist($user);
-            $this->em->flush();
+            $this->userManager->updateUser($user);
         } else {
             $uow = $this->em->getUnitOfWork();
             $uow->computeChangeSets();
             if ($uow->isEntityScheduled($user)) {
-                $this->em->flush();
+                $this->userManager->updateUser($user);
             }
         }
 

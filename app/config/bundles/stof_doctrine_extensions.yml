@@ -10,4 +10,5 @@ stof_doctrine_extensions:
         default_file_info_class: Stof\DoctrineExtensionsBundle\Uploadable\UploadedFileInfo
 
     orm:
-        default: ~
+        default:
+            timestampable: true

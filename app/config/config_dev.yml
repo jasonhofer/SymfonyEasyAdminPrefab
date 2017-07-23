@@ -1,6 +1,7 @@
 imports:
     - { resource: config.yml }
-    - { resource: bundles-dev/ }
+    # /bundles-dev/
+    - { resource: bundles-dev/doctrine_fixtures.yml }
 
 framework:
     router:

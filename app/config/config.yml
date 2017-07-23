@@ -1,13 +1,23 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+    - { resource: services-auto.yml }
     - { resource: services.yml }
-    - { resource: bundles/ }
+    # /bundles/
+    - { resource: bundles/doctrine_cache.yml }
+    - { resource: bundles/doctrine_migrations.yml }
+    - { resource: bundles/easy_admin.yml }
+    - { resource: bundles/fos_user.yml }
+    - { resource: bundles/ivory_ck_editor.yml }
+    - { resource: bundles/knpu_oauth2_client.yml }
+    - { resource: bundles/stof_doctrine_extensions.yml }
+    - { resource: bundles/vich_uploader.yml }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en_US
+    uploader.uri_prefix.user_images: /uploads/images/users
 
 framework:
     #esi: ~

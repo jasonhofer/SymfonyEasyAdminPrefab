@@ -17,13 +17,13 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class GenderType
+ * Class UserRolesType
  *
  * @package AppBundle\Form\Type
  * @author  Jason Hofer <jason.hofer@gmail.com>
- * 2017-07-23 2:12 AM
+ * 2017-07-23 2:30 PM
  */
-class GenderType extends AbstractType
+class UserRolesType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -32,10 +32,13 @@ class GenderType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefault('choices', [
-            'Female'      => 'female',
-            'Male'        => 'male',
-            'Unspecified' => 'unspecified',
+        $resolver->setDefaults([
+            'choices' => [
+                'Admin'       => 'ROLE_ADMIN',
+                'Super Admin' => 'ROLE_SUPER_ADMIN',
+            ],
+            'multiple' => true,
+            'expanded' => true,
         ]);
     }
 
@@ -52,6 +55,6 @@ class GenderType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'gender';
+        return 'user_roles';
     }
 }

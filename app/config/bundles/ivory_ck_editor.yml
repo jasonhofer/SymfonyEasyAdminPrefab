@@ -1,0 +1,8 @@
+#ivory_ck_editor:
+#    input_sync: true
+#    default_config: default_config
+#    configs:
+#
+#        default_config:
+#            toolbar:
+#                - { name: "styles", items: ['Bold', 'Italic', 'BulletedList', 'Link'] }
