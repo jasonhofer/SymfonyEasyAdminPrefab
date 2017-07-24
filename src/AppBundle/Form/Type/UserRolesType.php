@@ -1,14 +1,13 @@
 <?php
 
 /*
- * This file is part of the symfony-skeleton2 package.
+ * This file is part of the symfony-easyadmin-prefab package.
  *
  * (c) Jason Hofer <jason.hofer@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 
 namespace AppBundle\Form\Type;
 

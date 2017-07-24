@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the symfony-skeleton2 package.
+ * This file is part of the symfony-easyadmin-prefab package.
  *
  * (c) Jason Hofer <jason.hofer@gmail.com>
  *
