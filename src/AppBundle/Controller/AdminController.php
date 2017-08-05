@@ -22,7 +22,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration as Sensio;
  * @author  Jason Hofer <jason.hofer@gmail.com>
  * 2017-07-22 3:07 PM
  *
+ * Choose one:
  * @Sensio\Route("/admin")
+ * @ Sensio\Route(
+ *     "/",
+ *     host="admin.{domain}",
+ *     defaults={"domain"="%domain%"},
+ *     requirements={"domain"="%domain%"}
+ * )
  */
 class AdminController extends BaseAdminController
 {

@@ -15,7 +15,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
- * Class FacebookController
+ * Class SecurityController
  *
  * @package AppBundle\Controller
  * @author  Jason Hofer <jason.hofer@gmail.com>
@@ -61,7 +61,7 @@ class SecurityController extends Controller
     }
 
     /**
-     * After going to Facebook, you're redirected back here
+     * After going to Google+, you're redirected back here
      * because this is the "redirect_route" you configured
      * in config.yml
      *

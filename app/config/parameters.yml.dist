@@ -2,6 +2,10 @@
 # Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
 # https://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
 parameters:
+
+    domain:     example.com
+    site_title: Symfony EasyAdmin Prefab
+
     database_host: 127.0.0.1
     database_port: ~
     database_name: symfony
